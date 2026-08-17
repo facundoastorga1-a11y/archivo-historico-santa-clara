@@ -12,14 +12,12 @@
     --border-color: #dfd8c8;
     --border-accent: #c4b595;
     
-    /* Tipografías por defecto */
+    /* Variables reactivas de fuentes y tamaño */
     --font-heading: 'Cinzel', serif;
     --font-editorial: 'Playfair Display', serif;
     --font-sans: 'Plus Jakarta Sans', sans-serif;
-    
-    /* Factor de escala de tamaño */
-    --font-scale: 1rem;
-    
+    --font-scale: 16px;
+
     --whatsapp-color: #25d366;
     --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -33,7 +31,7 @@
     box-sizing: border-box;
 }
 
-/* Ocultar los inputs de control reactivo de CSS */
+/* Ocultar los inputs de control reactivo */
 .state-ctrl, .editor-checkbox-state {
     display: none;
 }
@@ -55,7 +53,7 @@ body {
 /* REACTIVIDAD EN VIVO (CSS PURO CON SELECTORES HERMANOS ~)          */
 /* ================================================================= */
 
-/* 1. Fuentes Formales (10 Opciones) */
+/* 1. FUENTES FORMALES (10 OPCIONES) */
 #f-cinzel:checked ~ .dynamic-page-wrapper { --font-heading: 'Cinzel', serif; }
 #f-playfair:checked ~ .dynamic-page-wrapper { --font-heading: 'Playfair Display', serif; }
 #f-merriweather:checked ~ .dynamic-page-wrapper { --font-heading: 'Merriweather', serif; }
@@ -67,19 +65,115 @@ body {
 #f-robotoslab:checked ~ .dynamic-page-wrapper { --font-heading: 'Roboto Slab', serif; }
 #f-inter:checked ~ .dynamic-page-wrapper { --font-heading: 'Inter', sans-serif; }
 
-/* 2. Tamaño de Fuentes */
+/* 2. TAMAÑO DE FUENTES */
 #sz-norm:checked ~ .dynamic-page-wrapper { --font-scale: 16px; }
-#sz-lg:checked ~ .dynamic-page-wrapper { --font-scale: 18.5px; }
-#sz-xl:checked ~ .dynamic-page-wrapper { --font-scale: 21px; }
+#sz-lg:checked ~ .dynamic-page-wrapper { --font-scale: 18px; }
+#sz-xl:checked ~ .dynamic-page-wrapper { --font-scale: 20px; }
 
-/* 3. Paleta de Color de Fondo */
+/* 3. COLOR DE FONDO DE LA PÁGINA (PALETA) */
 #bg-parchment:checked ~ .dynamic-page-wrapper { --bg-main: #f8f6f0; }
 #bg-purewhite:checked ~ .dynamic-page-wrapper { --bg-main: #ffffff; }
 #bg-creme:checked ~ .dynamic-page-wrapper { --bg-main: #faf4e6; }
 #bg-sand:checked ~ .dynamic-page-wrapper { --bg-main: #ede7d8; }
 #bg-stone:checked ~ .dynamic-page-wrapper { --bg-main: #e8eaeb; }
 
-/* Contenedor dinámico */
+/* 4. ENCABEZADO / ESTILOS DE HERO */
+#hero-burgundy:checked ~ .dynamic-page-wrapper .hero-section {
+    background: linear-gradient(180deg, var(--burgundy-dark) 0%, var(--burgundy-primary) 100%);
+    color: #ffffff;
+}
+#hero-burgundy:checked ~ .dynamic-page-wrapper .hero-title {
+    color: #ffffff;
+}
+#hero-burgundy:checked ~ .dynamic-page-wrapper .hero-description {
+    color: var(--gold-light);
+}
+#hero-burgundy:checked ~ .dynamic-page-wrapper .hero-eyebrow {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+#hero-banner:checked ~ .dynamic-page-wrapper .hero-section {
+    background: var(--bg-subtle);
+    border: 4px double var(--gold-accent);
+    margin: 1.5rem auto;
+    max-width: 1200px;
+    border-radius: 12px;
+}
+
+/* 5. REORDENAMIENTO DE SECCIONES (FLEX ORDER) */
+.page-main-layout {
+    display: flex;
+    flex-direction: column;
+}
+
+.block-hero    { order: 1; }
+.block-stats   { order: 2; }
+.block-fondos  { order: 3; }
+.block-map     { order: 4; }
+.block-profile { order: 5; }
+
+/* Reordenar: Perfil Primero */
+#order-profile-first:checked ~ .dynamic-page-wrapper .block-profile { order: 2; }
+#order-profile-first:checked ~ .dynamic-page-wrapper .block-stats   { order: 3; }
+#order-profile-first:checked ~ .dynamic-page-wrapper .block-fondos  { order: 4; }
+#order-profile-first:checked ~ .dynamic-page-wrapper .block-map     { order: 5; }
+
+/* Reordenar: Mapa Primero */
+#order-map-first:checked ~ .dynamic-page-wrapper .block-map     { order: 2; }
+#order-map-first:checked ~ .dynamic-page-wrapper .block-stats   { order: 3; }
+#order-map-first:checked ~ .dynamic-page-wrapper .block-fondos  { order: 4; }
+#order-map-first:checked ~ .dynamic-page-wrapper .block-profile { order: 5; }
+
+/* 6. REORDENAMIENTO DE TARJETAS DE FONDOS */
+.card-item-manuscritos { order: 1; }
+.card-item-hemeroteca  { order: 2; }
+.card-item-fototeca    { order: 3; }
+
+#cards-reverse:checked ~ .dynamic-page-wrapper .card-item-manuscritos { order: 3; }
+#cards-reverse:checked ~ .dynamic-page-wrapper .card-item-hemeroteca  { order: 2; }
+#cards-reverse:checked ~ .dynamic-page-wrapper .card-item-fototeca    { order: 1; }
+
+#cards-photo-first:checked ~ .dynamic-page-wrapper .card-item-fototeca    { order: 1; }
+#cards-photo-first:checked ~ .dynamic-page-wrapper .card-item-manuscritos { order: 2; }
+#cards-photo-first:checked ~ .dynamic-page-wrapper .card-item-hemeroteca  { order: 3; }
+
+/* 7. MODO EDICIÓN EN VIVO DE TÍTULOS Y TEXTOS (VISUAL HIGHLIGHT) */
+.editing-mode-banner {
+    display: none;
+    background-color: var(--burgundy-primary);
+    color: #ffffff;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    border-bottom: 2px solid var(--gold-accent);
+}
+
+#mode-inline-edit:checked ~ .dynamic-page-wrapper .editing-mode-banner {
+    display: block;
+}
+
+#mode-inline-edit:checked ~ .dynamic-page-wrapper [contenteditable="true"] {
+    outline: 2px dashed var(--gold-accent) !important;
+    outline-offset: 3px;
+    background-color: rgba(163, 125, 54, 0.08) !important;
+    cursor: text !important;
+    transition: var(--transition);
+}
+
+#mode-inline-edit:checked ~ .dynamic-page-wrapper [contenteditable="true"]:hover {
+    background-color: rgba(163, 125, 54, 0.16) !important;
+}
+
+#mode-inline-edit:checked ~ .dynamic-page-wrapper [contenteditable="true"]:focus {
+    outline: 2px solid var(--burgundy-primary) !important;
+    background-color: #ffffff !important;
+}
+
+/* ================================================================= */
+/* CONTENEDOR MAESTRO                                                */
+/* ================================================================= */
 .dynamic-page-wrapper {
     background-color: var(--bg-main);
     min-height: 100vh;
@@ -118,10 +212,6 @@ body {
     font-size: 1.05rem;
     letter-spacing: 0.04em;
     transition: var(--transition);
-}
-
-.brand-logo:hover {
-    color: var(--burgundy-dark);
 }
 
 .brand-symbol {
@@ -169,10 +259,11 @@ body {
 /* HERO SECTION                                                      */
 /* ================================================================= */
 .hero-section {
-    padding: 6rem 2rem 4.5rem;
+    padding: 5.5rem 2rem 4.5rem;
     text-align: center;
     background: linear-gradient(180deg, #ffffff 0%, var(--bg-main) 100%);
     border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
 }
 
 .hero-content {
@@ -197,7 +288,7 @@ body {
 
 .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    font-size: clamp(2.1rem, 4.5vw, 3.3rem);
     line-height: 1.2;
     font-weight: 700;
     color: var(--burgundy-primary);
@@ -263,7 +354,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* Estadísticas */
+/* Barra de Estadísticas */
 .stats-bar {
     max-width: 1100px;
     margin: -2.5rem auto 4.5rem;
@@ -353,12 +444,13 @@ body {
 }
 
 .collection-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
 }
 
 .archive-card {
+    flex: 1 1 320px;
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -485,7 +577,7 @@ body {
 }
 
 /* ================================================================= */
-/* SECCIÓN DE DIRECCIÓN (PERFIL PERSONAL CON FOTO CIRCULAR)          */
+/* SECCIÓN DE DIRECCIÓN (PERFIL CON FOTO CIRCULAR)                   */
 /* ================================================================= */
 .profile-section {
     max-width: 950px;
@@ -632,43 +724,45 @@ body {
 }
 
 /* ================================================================= */
-/* BOTÓN Y PANEL LATERAL DEL EDITOR EN VIVO (CSS PURO)               */
+/* BOTÓN FLOTANTE Y PANEL DE EDICIÓN EN VIVO (CSS PURO)              */
 /* ================================================================= */
 .editor-float-toggle {
     position: fixed;
-    top: 50%;
+    top: 45%;
     left: 0;
     transform: translateY(-50%);
     background-color: var(--burgundy-primary);
     color: #ffffff;
-    padding: 0.8rem 1rem 0.8rem 0.75rem;
-    border-radius: 0 8px 8px 0;
+    padding: 0.85rem 1.15rem 0.85rem 0.85rem;
+    border-radius: 0 10px 10px 0;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
     cursor: pointer;
     z-index: 995;
-    box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.25);
+    box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.3);
     transition: var(--transition);
+    border: 1px solid var(--gold-accent);
+    border-left: none;
 }
 
 .editor-float-toggle:hover {
     background-color: var(--burgundy-dark);
-    padding-left: 1rem;
+    padding-left: 1.1rem;
 }
 
-.editor-toggle-icon { font-size: 1.2rem; }
-.editor-toggle-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+.editor-toggle-icon { font-size: 1.3rem; }
+.editor-toggle-label { font-size: 0.84rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
 
 .live-editor-sidebar {
     position: fixed;
     top: 0;
-    left: -380px;
-    width: 360px;
+    left: -420px;
+    width: 400px;
     height: 100vh;
     background: #ffffff;
-    border-right: 2px solid var(--gold-accent);
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
+    border-right: 3px solid var(--gold-accent);
+    box-shadow: 12px 0 35px rgba(0, 0, 0, 0.25);
     z-index: 1000;
     transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
@@ -682,22 +776,37 @@ body {
 .editor-sidebar-header {
     background-color: var(--burgundy-primary);
     color: #ffffff;
-    padding: 1.25rem 1.5rem;
+    padding: 1.2rem 1.4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 2px solid var(--gold-accent);
+}
+
+.editor-header-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
 }
 
 .editor-sidebar-header h3 {
     font-family: var(--font-heading);
     font-size: 1.05rem;
+    color: #ffffff;
 }
 
 .btn-close-editor {
     color: #fff;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: bold;
+    line-height: 1;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.btn-close-editor:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .editor-sidebar-content {
@@ -706,7 +815,19 @@ body {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
+    gap: 1.6rem;
+}
+
+.editor-group {
+    background: var(--bg-subtle);
+    padding: 1.1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.highlight-group {
+    border-color: var(--gold-accent);
+    background-color: #fff9ed;
 }
 
 .editor-group-title {
@@ -714,28 +835,60 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--burgundy-primary);
-    margin-bottom: 0.75rem;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.35rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
 }
+
+.editor-group-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+/* Botón Conmutador de Edición de Textos */
+.btn-toggle-inline-edit {
+    display: block;
+    text-align: center;
+    padding: 0.65rem 1rem;
+    border-radius: 6px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: var(--burgundy-primary);
+    color: #ffffff;
+    transition: var(--transition);
+    border: 1px solid var(--burgundy-primary);
+}
+
+.btn-toggle-inline-edit .btn-toggle-state-on { display: none; }
+.btn-toggle-inline-edit .btn-toggle-state-off { display: inline; }
+
+#mode-inline-edit:checked ~ .live-editor-sidebar .btn-toggle-inline-edit {
+    background-color: #27ae60;
+    border-color: #27ae60;
+}
+
+#mode-inline-edit:checked ~ .live-editor-sidebar .btn-toggle-inline-edit .btn-toggle-state-off { display: none; }
+#mode-inline-edit:checked ~ .live-editor-sidebar .btn-toggle-inline-edit .btn-toggle-state-on { display: inline; }
 
 /* Listado de 10 Fuentes */
 .font-options-list {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
-    max-height: 180px;
+    gap: 0.35rem;
+    max-height: 160px;
     overflow-y: auto;
     border: 1px solid var(--border-color);
-    padding: 0.5rem;
+    padding: 0.4rem;
     border-radius: 6px;
-    background: var(--bg-subtle);
+    background: #ffffff;
 }
 
 .font-chip {
     padding: 0.4rem 0.6rem;
-    font-size: 0.82rem;
-    background: #fff;
+    font-size: 0.8rem;
+    background: #ffffff;
     border: 1px solid var(--border-accent);
     border-radius: 4px;
     cursor: pointer;
@@ -747,7 +900,6 @@ body {
     border-color: var(--burgundy-primary);
 }
 
-/* Familias individuales para previsualización */
 .font-opt-cinzel { font-family: 'Cinzel', serif; }
 .font-opt-playfair { font-family: 'Playfair Display', serif; }
 .font-opt-merriweather { font-family: 'Merriweather', serif; }
@@ -762,16 +914,16 @@ body {
 /* Opciones de Tamaño */
 .size-options-list {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 .size-chip {
     flex: 1;
     text-align: center;
-    padding: 0.5rem;
-    font-size: 0.75rem;
+    padding: 0.45rem;
+    font-size: 0.76rem;
     font-weight: 600;
-    background: var(--bg-subtle);
+    background: #ffffff;
     border: 1px solid var(--border-accent);
     border-radius: 4px;
     cursor: pointer;
@@ -781,38 +933,16 @@ body {
     background-color: var(--gold-light);
 }
 
-/* Campos de Subida en Editor */
-.editor-file-field {
-    margin-bottom: 0.75rem;
-}
-
-.editor-field-label {
-    display: block;
-    font-size: 0.78rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-    color: var(--text-muted);
-}
-
-.editor-input-file {
-    width: 100%;
-    font-size: 0.78rem;
-    padding: 0.35rem;
-    border: 1px solid var(--border-accent);
-    border-radius: 4px;
-    background: var(--bg-subtle);
-}
-
 /* Paleta de Colores de Fondo */
 .color-palette-grid {
     display: flex;
     gap: 0.75rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 }
 
 .color-swatch {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     cursor: pointer;
     border: 2px solid var(--border-accent);
@@ -836,8 +966,58 @@ body {
     font-style: italic;
 }
 
+/* Estilos de Encabezado y Reordenamiento */
+.header-style-options, .layout-order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.style-choice-pill, .order-choice-pill {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.78rem;
+    background: #ffffff;
+    border: 1px solid var(--border-accent);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.style-choice-pill:hover, .order-choice-pill:hover {
+    background-color: var(--gold-light);
+    border-color: var(--burgundy-primary);
+}
+
+.editor-upload-fields {
+    margin-top: 0.85rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 0.85rem;
+}
+
+.editor-file-field {
+    margin-bottom: 0.65rem;
+}
+
+.editor-field-label {
+    display: block;
+    font-size: 0.76rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--text-muted);
+}
+
+.editor-input-file {
+    width: 100%;
+    font-size: 0.75rem;
+    padding: 0.35rem;
+    border: 1px solid var(--border-accent);
+    border-radius: 4px;
+    background: #ffffff;
+}
+
 /* ================================================================= */
-/* MODAL PRIVADO DE ADMINISTRACIÓN (CSS PURO CON :target)            */
+/* MODAL PRIVADO DE ADMINISTRACIÓN (:target)                         */
 /* ================================================================= */
 .admin-modal-overlay {
     position: fixed;
@@ -854,7 +1034,6 @@ body {
     padding: 1.5rem;
 }
 
-/* Se abre únicamente cuando la URL tiene #panel-admin */
 .admin-modal-overlay:target {
     display: flex;
 }
@@ -887,10 +1066,7 @@ body {
     color: var(--burgundy-primary);
 }
 
-.upload-form {
-    background: var(--bg-surface);
-}
-
+.upload-form { background: var(--bg-surface); }
 .form-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -898,18 +1074,8 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-}
-
-.form-label {
-    font-size: 0.84rem;
-    font-weight: 600;
-    color: var(--text-main);
-}
-
+.form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+.form-label { font-size: 0.84rem; font-weight: 600; color: var(--text-main); }
 .form-input {
     width: 100%;
     padding: 0.7rem 0.9rem;
@@ -969,7 +1135,6 @@ body {
 .dropzone-icon { font-size: 2rem; }
 .dropzone-text { font-weight: 600; font-size: 0.95rem; color: var(--burgundy-primary); }
 .dropzone-formats { font-size: 0.8rem; color: var(--text-muted); }
-
 .form-actions { text-align: center; }
 .btn-submit { width: 100%; max-width: 360px; justify-content: center; }
 
@@ -1059,7 +1224,7 @@ body {
     }
 
     .hero-section {
-        padding: 4.5rem 1.5rem 3.5rem;
+        padding: 4rem 1.5rem 3rem;
     }
 
     .stats-bar {
@@ -1098,6 +1263,6 @@ body {
     }
     
     .live-editor-sidebar {
-        width: 300px;
+        width: 310px;
     }
 }

@@ -5,40 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archivo Histórico Digital de Santa Clara</title>
-    <!-- Google Fonts con 10 familias tipográficas formales para el editor -->
+    <!-- Google Fonts con 10 familias tipográficas formales -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Lora:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Bodoni+Moda:ital,wght@0,500;0,700;1,400&family=Cinzel+Decorative:wght@700&family=Inter:wght@400;600&family=Roboto+Slab:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Lora:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Bodoni+Moda:ital,wght@0,500;0,700;1,400&family=Inter:wght@400;600;700&family=Roboto+Slab:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- INPUTS OCULTOS DE CONTROL PARA SELECTORES DE TIPOGRAFÍAS (CSS PURO) -->
-    <input type="radio" name="font-switch" id="f-default" class="state-ctrl" checked>
-    <input type="radio" name="font-switch" id="f-cinzel" class="state-ctrl">
-    <input type="radio" name="font-switch" id="f-playfair" class="state-ctrl">
-    <input type="radio" name="font-switch" id="f-merriweather" class="state-ctrl">
-    <input type="radio" name="font-switch" id="f-lora" class="state-ctrl">
-    <input type="radio" name="font-switch" id="f-ebgaramond" class="state-ctrl">
-    <input type="radio" name="font-switch" id="f-cormorant" class="state-ctrl">
-    <input type="radio" name="font-switch" id="f-baskerville" class="state-ctrl">
-    <input type="radio" name="font-switch" id="f-bodoni" class="state-ctrl">
-    <input type="radio" name="font-switch" id="f-robotoslab" class="state-ctrl">
-    <input type="radio" name="font-switch" id="f-inter" class="state-ctrl">
+    <!-- ================================================================= -->
+    <!-- INPUTS DE CONTROL REACTIVO (CSS PURO)                            -->
+    <!-- ================================================================= -->
 
-    <!-- INPUTS OCULTOS DE CONTROL PARA TAMAÑO DE TEXTO (CSS PURO) -->
-    <input type="radio" name="size-switch" id="sz-norm" class="state-ctrl" checked>
-    <input type="radio" name="size-switch" id="sz-lg" class="state-ctrl">
-    <input type="radio" name="size-switch" id="sz-xl" class="state-ctrl">
+    <!-- MODO EDICIÓN EN DIRECTO DE TEXTOS (CONTENTEDITABLE VISUAL) -->
+    <input type="checkbox" id="mode-inline-edit" class="state-ctrl">
 
-    <!-- INPUTS OCULTOS DE CONTROL PARA PALETA DE COLORES DE FONDO (CSS PURO) -->
-    <input type="radio" name="bg-switch" id="bg-parchment" class="state-ctrl" checked>
-    <input type="radio" name="bg-switch" id="bg-purewhite" class="state-ctrl">
-    <input type="radio" name="bg-switch" id="bg-creme" class="state-ctrl">
-    <input type="radio" name="bg-switch" id="bg-sand" class="state-ctrl">
-    <input type="radio" name="bg-switch" id="bg-stone" class="state-ctrl">
+    <!-- 1. FUENTES (10 ESTILOS FORMALES) -->
+    <input type="radio" name="font-ctrl" id="f-cinzel" class="state-ctrl" checked>
+    <input type="radio" name="font-ctrl" id="f-playfair" class="state-ctrl">
+    <input type="radio" name="font-ctrl" id="f-merriweather" class="state-ctrl">
+    <input type="radio" name="font-ctrl" id="f-lora" class="state-ctrl">
+    <input type="radio" name="font-ctrl" id="f-ebgaramond" class="state-ctrl">
+    <input type="radio" name="font-ctrl" id="f-cormorant" class="state-ctrl">
+    <input type="radio" name="font-ctrl" id="f-baskerville" class="state-ctrl">
+    <input type="radio" name="font-ctrl" id="f-bodoni" class="state-ctrl">
+    <input type="radio" name="font-ctrl" id="f-robotoslab" class="state-ctrl">
+    <input type="radio" name="font-ctrl" id="f-inter" class="state-ctrl">
 
-    <!-- CONTENEDOR MAESTRO DE LA PÁGINA (REACTIVO AL EDITOR CSS) -->
+    <!-- 2. TAMAÑO DE TEXTO GENERAL -->
+    <input type="radio" name="size-ctrl" id="sz-norm" class="state-ctrl" checked>
+    <input type="radio" name="size-ctrl" id="sz-lg" class="state-ctrl">
+    <input type="radio" name="size-ctrl" id="sz-xl" class="state-ctrl">
+
+    <!-- 3. COLOR DE FONDO DE LA PÁGINA (PALETA) -->
+    <input type="radio" name="bg-ctrl" id="bg-parchment" class="state-ctrl" checked>
+    <input type="radio" name="bg-ctrl" id="bg-purewhite" class="state-ctrl">
+    <input type="radio" name="bg-ctrl" id="bg-creme" class="state-ctrl">
+    <input type="radio" name="bg-ctrl" id="bg-sand" class="state-ctrl">
+    <input type="radio" name="bg-ctrl" id="bg-stone" class="state-ctrl">
+
+    <!-- 4. ENCABEZADO / ESTILO DEL HERO -->
+    <input type="radio" name="hero-style-ctrl" id="hero-classic" class="state-ctrl" checked>
+    <input type="radio" name="hero-style-ctrl" id="hero-burgundy" class="state-ctrl">
+    <input type="radio" name="hero-style-ctrl" id="hero-banner" class="state-ctrl">
+
+    <!-- 5. REORDENAMIENTO DE SECCIONES (CAMBIAR DE LUGAR LOS ELEMENTOS) -->
+    <input type="radio" name="layout-order-ctrl" id="order-standard" class="state-ctrl" checked>
+    <input type="radio" name="layout-order-ctrl" id="order-profile-first" class="state-ctrl">
+    <input type="radio" name="layout-order-ctrl" id="order-map-first" class="state-ctrl">
+
+    <!-- 6. REORDENAMIENTO DE FONDOS DOCUMENTALES -->
+    <input type="radio" name="cards-order-ctrl" id="cards-standard" class="state-ctrl" checked>
+    <input type="radio" name="cards-order-ctrl" id="cards-reverse" class="state-ctrl">
+    <input type="radio" name="cards-order-ctrl" id="cards-photo-first" class="state-ctrl">
+
+
+    <!-- ================================================================= -->
+    <!-- CONTENEDOR MAESTRO DINÁMICO                                       -->
+    <!-- ================================================================= -->
     <div class="dynamic-page-wrapper">
 
         <!-- Barra de Navegación -->
@@ -46,7 +70,7 @@
             <nav class="navbar">
                 <a href="#" class="brand-logo">
                     <span class="brand-symbol">⚜</span>
-                    <span class="brand-name">Archivo Histórico Digital de Santa Clara</span>
+                    <span class="brand-name" contenteditable="true">Archivo Histórico Digital de Santa Clara</span>
                 </a>
                 <ul class="nav-links">
                     <li><a href="#fondos">Fondos</a></li>
@@ -58,94 +82,100 @@
             </nav>
         </header>
 
-        <main>
-            <!-- Hero Section con Encabezado Dinámico -->
-            <section class="hero-section">
+        <!-- Indicador visual cuando el modo de edición de textos está activo -->
+        <div class="editing-mode-banner">
+            ✏️ <strong>Modo Edición en Directo Activo:</strong> Puedes hacer clic y escribir sobre cualquier título, subtítulo, tarjeta, biografía o texto de la página para modificarlo en tiempo real.
+        </div>
+
+        <main class="page-main-layout">
+
+            <!-- BLOQUE 1: ENCABEZADO / HERO -->
+            <section class="layout-block block-hero hero-section">
                 <div class="hero-content">
-                    <span class="hero-eyebrow">Preservación · Investigación · Santa Clara, Jujuy</span>
-                    <h1 class="hero-title">Archivo Histórico Digital de Santa Clara</h1>
-                    <p class="hero-description">
+                    <span class="hero-eyebrow" contenteditable="true">Preservación · Investigación · Santa Clara, Jujuy</span>
+                    <h1 class="hero-title" contenteditable="true">Archivo Histórico Digital de Santa Clara</h1>
+                    <p class="hero-description" contenteditable="true">
                         Custodia documental, digitalización sistemática y divulgación científica del patrimonio histórico y testimonial de nuestra localidad y el ramal jujeño.
                     </p>
                     <div class="hero-cta-group">
-                        <a href="#fondos" class="btn btn-primary">Explorar Acervos</a>
-                        <a href="#ubicacion" class="btn btn-secondary">Ver Localización</a>
+                        <a href="#fondos" class="btn btn-primary" contenteditable="true">Explorar Acervos</a>
+                        <a href="#ubicacion" class="btn btn-secondary" contenteditable="true">Ver Localización</a>
                     </div>
                 </div>
             </section>
 
-            <!-- Barra de Estadísticas -->
-            <section class="stats-bar">
+            <!-- BLOQUE 2: ESTADÍSTICAS -->
+            <section class="layout-block block-stats stats-bar">
                 <div class="stat-card">
-                    <span class="stat-number">+10K</span>
-                    <span class="stat-label">Folios Digitalizados</span>
+                    <span class="stat-number" contenteditable="true">+10K</span>
+                    <span class="stat-label" contenteditable="true">Folios Digitalizados</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number">Siglos XVI-XX</span>
-                    <span class="stat-label">Marco Histórico</span>
+                    <span class="stat-number" contenteditable="true">Siglos XVI-XX</span>
+                    <span class="stat-label" contenteditable="true">Marco Histórico</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Acceso Preservado</span>
+                    <span class="stat-number" contenteditable="true">100%</span>
+                    <span class="stat-label" contenteditable="true">Acceso Preservado</span>
                 </div>
             </section>
 
-            <!-- Fondos Documentales con botón Explorar -->
-            <section id="fondos" class="archive-section">
+            <!-- BLOQUE 3: FONDOS DOCUMENTALES -->
+            <section id="fondos" class="layout-block block-fondos archive-section">
                 <div class="section-header">
-                    <span class="section-tag">Catalogación Archivística</span>
-                    <h2 class="section-title">Fondos Documentales</h2>
+                    <span class="section-tag" contenteditable="true">Catalogación Archivística</span>
+                    <h2 class="section-title" contenteditable="true">Fondos Documentales</h2>
                     <div class="separator"></div>
                 </div>
 
                 <div class="collection-grid">
-                    <!-- Manuscritos -->
-                    <article class="archive-card">
-                        <div class="card-badge">Manuscritos</div>
+                    <!-- Tarjeta Manuscritos -->
+                    <article class="archive-card card-item-manuscritos">
+                        <div class="card-badge" contenteditable="true">Manuscritos</div>
                         <div class="card-body">
-                            <h3 class="card-title">Fondos Manuscritos</h3>
-                            <p class="card-text">Correspondencia oficial, protocolos territoriales, libros de actas y registros notariales de alto valor testimonial.</p>
-                            <span class="card-meta">Formatos: TIFF / PDF-A · Metadatos ISAD(G)</span>
+                            <h3 class="card-title" contenteditable="true">Fondos Manuscritos</h3>
+                            <p class="card-text" contenteditable="true">Correspondencia oficial, protocolos territoriales, libros de actas y registros notariales de alto valor testimonial.</p>
+                            <span class="card-meta" contenteditable="true">Formatos: TIFF / PDF-A · Metadatos ISAD(G)</span>
                         </div>
                         <div class="card-footer">
-                            <a href="#fondos" class="btn-card-action">Explorar Fondo Manuscritos →</a>
+                            <a href="#fondos" class="btn-card-action" contenteditable="true">Explorar Fondo Manuscritos →</a>
                         </div>
                     </article>
 
-                    <!-- Hemeroteca -->
-                    <article class="archive-card">
-                        <div class="card-badge">Hemeroteca</div>
+                    <!-- Tarjeta Hemeroteca -->
+                    <article class="archive-card card-item-hemeroteca">
+                        <div class="card-badge" contenteditable="true">Hemeroteca</div>
                         <div class="card-body">
-                            <h3 class="card-title">Hemeroteca Histórica</h3>
-                            <p class="card-text">Prensa escrita, periódicos regionales, hojas sueltas y revistas de época con transcripción textual y búsqueda indexada.</p>
-                            <span class="card-meta">OCR de alta precisión · Búsqueda por texto</span>
+                            <h3 class="card-title" contenteditable="true">Hemeroteca Histórica</h3>
+                            <p class="card-text" contenteditable="true">Prensa escrita, periódicos regionales, hojas sueltas y revistas de época con transcripción textual y búsqueda indexada.</p>
+                            <span class="card-meta" contenteditable="true">OCR de alta precisión · Búsqueda por texto</span>
                         </div>
                         <div class="card-footer">
-                            <a href="#fondos" class="btn-card-action">Explorar Hemeroteca →</a>
+                            <a href="#fondos" class="btn-card-action" contenteditable="true">Explorar Hemeroteca →</a>
                         </div>
                     </article>
 
-                    <!-- Fototeca -->
-                    <article class="archive-card">
-                        <div class="card-badge">Fototeca</div>
+                    <!-- Tarjeta Fototeca -->
+                    <article class="archive-card card-item-fototeca">
+                        <div class="card-badge" contenteditable="true">Fototeca</div>
                         <div class="card-body">
-                            <h3 class="card-title">Fototeca y Cartografía</h3>
-                            <p class="card-text">Colección fotográfica comunitaria, retratos de familias históricas, mapas topográficos y cartografía territorial.</p>
-                            <span class="card-meta">Formatos: JPG / PNG · Placas y Negativos</span>
+                            <h3 class="card-title" contenteditable="true">Fototeca y Cartografía</h3>
+                            <p class="card-text" contenteditable="true">Colección fotográfica comunitaria, retratos de familias históricas, mapas topográficos y cartografía territorial.</p>
+                            <span class="card-meta" contenteditable="true">Formatos: JPG / PNG · Placas y Negativos</span>
                         </div>
                         <div class="card-footer">
-                            <a href="#fondos" class="btn-card-action">Explorar Fototeca →</a>
+                            <a href="#fondos" class="btn-card-action" contenteditable="true">Explorar Fototeca →</a>
                         </div>
                     </article>
                 </div>
             </section>
 
-            <!-- Apartado con Mapa de Google Maps: Santa Clara, Jujuy -->
-            <section id="ubicacion" class="location-section">
+            <!-- BLOQUE 4: UBICACIÓN Y MAPA DE GOOGLE -->
+            <section id="ubicacion" class="layout-block block-map location-section">
                 <div class="section-header">
-                    <span class="section-tag">Territorio y Memoria</span>
-                    <h2 class="section-title">Ubicación Histórica y Geográfica</h2>
-                    <p class="section-subtitle">Localidad de Santa Clara, Departamento Santa Bárbara, Provincia de Jujuy, República Argentina.</p>
+                    <span class="section-tag" contenteditable="true">Territorio y Memoria</span>
+                    <h2 class="section-title" contenteditable="true">Ubicación Histórica y Geográfica</h2>
+                    <p class="section-subtitle" contenteditable="true">Localidad de Santa Clara, Departamento Santa Bárbara, Provincia de Jujuy, República Argentina.</p>
                     <div class="separator"></div>
                 </div>
 
@@ -154,7 +184,7 @@
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14589.60538965022!2d-64.67380965!3d-24.2862085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941b9e59714856f7%3A0xe5aefc9faee6e1a4!2sSanta%20Clara%2C%20Jujuy!5e0!3m2!1ses-419!2sar!4v1715000000000!5m2!1ses-419!2sar" 
                             width="100%" 
-                            height="450" 
+                            height="420" 
                             style="border:0;" 
                             allowfullscreen="" 
                             loading="lazy" 
@@ -164,47 +194,48 @@
                     </div>
                     <div class="map-info-bar">
                         <span class="map-pin-icon">📍</span>
-                        <span>Santa Clara, Jujuy, Argentina — Lat: -24.2862, Long: -64.6738</span>
+                        <span contenteditable="true">Santa Clara, Jujuy, Argentina — Lat: -24.2862, Long: -64.6738</span>
                     </div>
                 </div>
             </section>
 
-            <!-- Sección de Dirección e Investigación Histórica (Perfil Personal) -->
-            <section id="direccion" class="profile-section">
+            <!-- BLOQUE 5: DIRECCIÓN E INVESTIGACIÓN (PERFIL CON FOTO CIRCULAR) -->
+            <section id="direccion" class="layout-block block-profile profile-section">
                 <div class="profile-card">
                     <div class="profile-avatar-wrapper">
                         <!-- Foto con marco circular -->
                         <img src="foto 4 x 4 2.jpg" alt="Facundo Astorga - Licenciado en Historia" class="profile-avatar">
                     </div>
                     <div class="profile-info">
-                        <span class="profile-role-tag">Dirección e Investigación Histórica</span>
-                        <h2 class="profile-name">Facundo Astorga</h2>
-                        <h3 class="profile-title">Licenciado en Historia</h3>
-                        <p class="profile-bio">
+                        <span class="profile-role-tag" contenteditable="true">Dirección e Investigación Histórica</span>
+                        <h2 class="profile-name" contenteditable="true">Facundo Astorga</h2>
+                        <h3 class="profile-title" contenteditable="true">Licenciado en Historia</h3>
+                        <p class="profile-bio" contenteditable="true">
                             Especialista en preservación documental, heurística histórica y organización de archivos regionales. Encargado de la custodia, catalogación científica y puesta en valor del patrimonio documental de Santa Clara y sus áreas de influencia.
                         </p>
                         <div class="profile-contacts">
-                            <a href="mailto:facundoastorga1@gmail.com" class="profile-contact-btn">
+                            <a href="mailto:facundoastorga1@gmail.com" class="profile-contact-btn" contenteditable="true">
                                 ✉ facundoastorga1@gmail.com
                             </a>
-                            <a href="https://wa.me/5493888679267?text=Hola%20Facundo,%20quisiera%20hacerle%20una%20consulta%20histórica." target="_blank" rel="noopener noreferrer" class="profile-contact-btn">
+                            <a href="https://wa.me/5493888679267?text=Hola%20Facundo,%20quisiera%20hacerle%20una%20consulta%20histórica." target="_blank" rel="noopener noreferrer" class="profile-contact-btn" contenteditable="true">
                                 ✆ +54 9 3888-679267
                             </a>
                         </div>
                     </div>
                 </div>
             </section>
+
         </main>
 
         <!-- Pie de página -->
         <footer id="contacto" class="site-footer">
             <div class="footer-container">
-                <blockquote class="preservation-quote">
+                <blockquote class="preservation-quote" contenteditable="true">
                     «Custodiar un archivo no es guardar papeles viejos: es salvaguardar la memoria colectiva, garantizar el derecho a la verdad histórica y construir las bases identitarias de las generaciones venideras.»
                 </blockquote>
 
                 <div class="footer-bottom">
-                    <p class="copyright">© 2026 Archivo Histórico Digital de Santa Clara. Todos los derechos reservados.</p>
+                    <p class="copyright" contenteditable="true">© 2026 Archivo Histórico Digital de Santa Clara. Todos los derechos reservados.</p>
                 </div>
             </div>
         </footer>
@@ -213,42 +244,55 @@
 
 
     <!-- ================================================================= -->
-    <!-- BOTÓN Y PANEL DE EDICIÓN EN VIVO (CSS PURO)                      -->
+    <!-- BOTÓN Y PANEL INTEGRAL DE EDICIÓN EN VIVO (CSS PURO)              -->
     <!-- ================================================================= -->
     <input type="checkbox" id="toggle-editor" class="editor-checkbox-state">
-    <label for="toggle-editor" class="editor-float-toggle" title="Abrir Editor en Vivo de la Página">
+    <label for="toggle-editor" class="editor-float-toggle" title="Abrir Consola de Edición">
         <span class="editor-toggle-icon">⚙</span>
-        <span class="editor-toggle-label">Editar en Vivo</span>
+        <span class="editor-toggle-label">Editar Página</span>
     </label>
 
     <aside class="live-editor-sidebar">
         <div class="editor-sidebar-header">
-            <h3>🛠 Editor de Sitio en Vivo</h3>
-            <label for="toggle-editor" class="btn-close-editor">✕</label>
+            <div class="editor-header-title">
+                <span class="editor-icon-badge">🛠</span>
+                <h3>Consola de Edición en Vivo</h3>
+            </div>
+            <label for="toggle-editor" class="btn-close-editor" title="Cerrar panel">✕</label>
         </div>
 
         <div class="editor-sidebar-content">
-            
-            <!-- 1. Fuentes (10 tipos formales) -->
+
+            <!-- 1. ACTIVAR EDICIÓN DE TÍTULOS Y TEXTOS -->
+            <div class="editor-group highlight-group">
+                <h4 class="editor-group-title">✏️ 1. Editar Títulos y Textos</h4>
+                <p class="editor-group-desc">Activa el resaltador interactivo para modificar cualquier texto directamente en la pantalla con el cursor.</p>
+                <label for="mode-inline-edit" class="btn-toggle-inline-edit">
+                    <span class="btn-toggle-state-off">Activar Edición Visual de Textos</span>
+                    <span class="btn-toggle-state-on">✓ Edición Visual Activada</span>
+                </label>
+            </div>
+
+            <!-- 2. FUENTES (10 TIPOS FORMALES) -->
             <div class="editor-group">
-                <h4 class="editor-group-title">1. Fuentes Formales (10 Estilos)</h4>
+                <h4 class="editor-group-title">🔤 2. Tipografías Formales (10 Estilos)</h4>
                 <div class="font-options-list">
-                    <label for="f-default" class="font-chip font-opt-cinzel">1. Cinzel (Original)</label>
-                    <label for="f-playfair" class="font-chip font-opt-playfair">2. Playfair Display</label>
-                    <label for="f-merriweather" class="font-chip font-opt-merriweather">3. Merriweather Serif</label>
+                    <label for="f-cinzel" class="font-chip font-opt-cinzel">1. Cinzel Clásico (Original)</label>
+                    <label for="f-playfair" class="font-chip font-opt-playfair">2. Playfair Display Elegante</label>
+                    <label for="f-merriweather" class="font-chip font-opt-merriweather">3. Merriweather Académico</label>
                     <label for="f-lora" class="font-chip font-opt-lora">4. Lora Editorial</label>
-                    <label for="f-ebgaramond" class="font-chip font-opt-ebgaramond">5. EB Garamond Clásico</label>
-                    <label for="f-cormorant" class="font-chip font-opt-cormorant">6. Cormorant Garamond</label>
+                    <label for="f-ebgaramond" class="font-chip font-opt-ebgaramond">5. EB Garamond Histórico</label>
+                    <label for="f-cormorant" class="font-chip font-opt-cormorant">6. Cormorant Garamond Fino</label>
                     <label for="f-baskerville" class="font-chip font-opt-baskerville">7. Libre Baskerville</label>
-                    <label for="f-bodoni" class="font-chip font-opt-bodoni">8. Bodoni Moda</label>
-                    <label for="f-robotoslab" class="font-chip font-opt-robotoslab">9. Roboto Slab</label>
-                    <label for="f-inter" class="font-chip font-opt-inter">10. Inter Modern Formal</label>
+                    <label for="f-bodoni" class="font-chip font-opt-bodoni">8. Bodoni Moda Titular</label>
+                    <label for="f-robotoslab" class="font-chip font-opt-robotoslab">9. Roboto Slab Sólido</label>
+                    <label for="f-inter" class="font-chip font-opt-inter">10. Inter Moderno Formal</label>
                 </div>
             </div>
 
-            <!-- 2. Tamaño de Fuentes -->
+            <!-- 3. TAMAÑO DE FUENTES -->
             <div class="editor-group">
-                <h4 class="editor-group-title">2. Tamaño de Fuentes</h4>
+                <h4 class="editor-group-title">📏 3. Tamaño General de Fuentes</h4>
                 <div class="size-options-list">
                     <label for="sz-norm" class="size-chip">Estándar (100%)</label>
                     <label for="sz-lg" class="size-chip">Mediano (+15%)</label>
@@ -256,30 +300,56 @@
                 </div>
             </div>
 
-            <!-- 3. Encabezado / Subir Fotos o Imágenes -->
+            <!-- 4. PALETA DE COLOR DE FONDO -->
             <div class="editor-group">
-                <h4 class="editor-group-title">3. Encabezado e Imágenes</h4>
-                <div class="editor-file-field">
-                    <label class="editor-field-label">Subir nueva imagen de cabecera:</label>
-                    <input type="file" class="editor-input-file" accept="image/*">
-                </div>
-                <div class="editor-file-field">
-                    <label class="editor-field-label">Subir banner / logo institucional:</label>
-                    <input type="file" class="editor-input-file" accept="image/*">
-                </div>
-            </div>
-
-            <!-- 4. Paleta de Color de Fondo -->
-            <div class="editor-group">
-                <h4 class="editor-group-title">4. Color de Fondo (Paleta)</h4>
+                <h4 class="editor-group-title">🎨 4. Paleta de Color de Fondo</h4>
                 <div class="color-palette-grid">
                     <label for="bg-parchment" class="color-swatch swatch-parchment" title="Pergamino Suave"></label>
                     <label for="bg-purewhite" class="color-swatch swatch-purewhite" title="Blanco Puro"></label>
                     <label for="bg-creme" class="color-swatch swatch-creme" title="Crema Cálido"></label>
-                    <label for="bg-sand" class="color-swatch swatch-sand" title="Arena Histórico"></label>
+                    <label for="bg-sand" class="color-swatch swatch-sand" title="Arena Colonial"></label>
                     <label for="bg-stone" class="color-swatch swatch-stone" title="Piedra Suave"></label>
                 </div>
-                <span class="color-selected-hint">Haga clic en una muestra de color para aplicar en directo.</span>
+                <span class="color-selected-hint">Haz clic sobre un color para cambiar el fondo al instante.</span>
+            </div>
+
+            <!-- 5. ENCABEZADO Y SUBIDA DE IMÁGENES -->
+            <div class="editor-group">
+                <h4 class="editor-group-title">🏛 5. Estilo de Encabezado y Fotos</h4>
+                <div class="header-style-options">
+                    <label for="hero-classic" class="style-choice-pill">Encabezado Claro Tradicional</label>
+                    <label for="hero-burgundy" class="style-choice-pill">Encabezado Burdeos Académico</label>
+                    <label for="hero-banner" class="style-choice-pill">Encabezado Pergamino Enmarcado</label>
+                </div>
+                
+                <div class="editor-upload-fields">
+                    <div class="editor-file-field">
+                        <label class="editor-field-label">Subir nueva imagen de cabecera / fondo:</label>
+                        <input type="file" class="editor-input-file" accept="image/*">
+                    </div>
+                    <div class="editor-file-field">
+                        <label class="editor-field-label">Subir logo o escudo institucional:</label>
+                        <input type="file" class="editor-input-file" accept="image/*">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. CAMBIAR DE LUGAR LOS ELEMENTOS (REORDENAMIENTO) -->
+            <div class="editor-group">
+                <h4 class="editor-group-title">🔀 6. Cambiar de Lugar los Elementos</h4>
+                <p class="editor-group-desc">Reordena las secciones principales del sitio:</p>
+                <div class="layout-order-list">
+                    <label for="order-standard" class="order-choice-pill">1. Orden Estándar (Hero → Fondos → Mapa → Perfil)</label>
+                    <label for="order-profile-first" class="order-choice-pill">2. Dirección e Historiador Primero</label>
+                    <label for="order-map-first" class="order-choice-pill">3. Ubicación y Mapa Primero</label>
+                </div>
+
+                <p class="editor-group-desc" style="margin-top: 0.85rem;">Reordena las tarjetas de Fondos Documentales:</p>
+                <div class="layout-order-list">
+                    <label for="cards-standard" class="order-choice-pill">Manuscritos → Hemeroteca → Fototeca</label>
+                    <label for="cards-reverse" class="order-choice-pill">Invertir: Fototeca → Hemeroteca → Manuscritos</label>
+                    <label for="cards-photo-first" class="order-choice-pill">Fototeca y Cartografía al Centro</label>
+                </div>
             </div>
 
         </div>
@@ -287,12 +357,11 @@
 
 
     <!-- ================================================================= -->
-    <!-- PANEL ADMINISTRATIVO PRIVADO (PROTEGIDO POR MODAL CSS PURO)       -->
-    <!-- Solo accesible haciendo clic en "Acceso Admin"                   -->
+    <!-- MODAL PRIVADO DE ADMINISTRACIÓN Y CARGA DE ARCHIVOS               -->
     <!-- ================================================================= -->
     <div id="panel-admin" class="admin-modal-overlay">
         <div class="admin-modal-box">
-            <a href="#" class="btn-close-modal">✕</a>
+            <a href="#" class="btn-close-modal" title="Cerrar panel">✕</a>
             
             <div class="upload-header">
                 <span class="section-tag">Panel Administrativo Privado</span>
@@ -347,7 +416,7 @@
 
 
     <!-- ================================================================= -->
-    <!-- BOTONES FLOTANTES DE CONTACTO: GMAIL Y WHATSAPP JUNTOS            -->
+    <!-- BOTONES FLOTANTES DE CONTACTO: GMAIL Y WHATSAPP                   -->
     <!-- ================================================================= -->
     <div class="floating-contact-dock">
         <!-- Botón Gmail con Logo Oficial SVG -->
